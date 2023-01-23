@@ -63,7 +63,7 @@
                                 </td>
                                 <td width="120">
                                     <button type="button" class="btn btn-primary"
-                                        v-on:click="tempProducts=product">查看細節</button>
+                                        @click="tempProducts=product">查看細節</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -74,7 +74,7 @@
                     <h2>單一產品細節</h2>
                     <template v-if="tempProducts.id">
                         <div class="card mb-3">
-                            <img v-bind:src="tempProducts.imageUrl" class="card-img-top primary-image" alt="主圖">
+                            <img :src="tempProducts.imageUrl" class="card-img-top primary-image" alt="主圖">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     {{ tempProducts.title }}
@@ -90,7 +90,7 @@
                             </div>
                         </div>
                         <template v-for="img in tempProducts.imagesUrl">
-                            <img v-bind:src="img" alt="" class="images m-2">
+                            <img :src="img" alt="" class="images m-2">
                         </template>
                     </template>
                     <p class="text-secondary" v-else>請選擇一個商品查看</p>
