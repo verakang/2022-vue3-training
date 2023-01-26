@@ -13,7 +13,8 @@ const app = createApp({
             productTemp: {
                 imagesUrl: []
             },
-            isNew: false
+            isNew: false,
+            updateTitle: "新增產品"
         }
     },
     methods: {
@@ -47,6 +48,7 @@ const app = createApp({
                 productModal.show();
                 // 如果為新增資料，將狀態改為 true 並初始化欄位為空。
                 this.isNew = true;
+                this.updateTitle = "新增產品";
                 this.productTemp = {
                     imagesUrl: []
                 }
@@ -54,6 +56,7 @@ const app = createApp({
                 productModal.show();
                 // 如果為編輯資料，將狀態改為 false 並將資料帶入欄位。
                 this.isNew = false;
+                this.updateTitle = "編輯產品";
                 // 修改欄位的顯示資料需要用淺拷貝，才不會直接連動到原始資料。
                 this.productTemp = { ...product };
                 // 判斷 imagesUrl 是否為陣列，如非陣列，則加入空陣列，讓原先沒有圖片的資料可以新增圖片。
