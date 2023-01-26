@@ -12,14 +12,14 @@ const app = {
     },
     methods: {
         checkLogin() {
-            const url = `${this.apiUrl}/api/user/check`
+            const url = `${this.apiUrl}/api/user/check`;
             axios.post(url)
                 .then(() => {
                     this.getData();
                 })
                 .catch((err) => {
                     alert(err.response.data.message);
-                    window.location = 'login.html';
+                    window.location = './login.html';
                 })
         },
         getData() {
@@ -28,9 +28,9 @@ const app = {
                 .then((res) => {
                     this.products = res.data.products;
                 })
-                .catch((err => {
+                .catch((err) => {
                     alert(err.response.data.message);
-                }))
+                })
         }
     },
     mounted() {

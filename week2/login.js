@@ -16,7 +16,7 @@ function login() {
         .then((res) => {
             const { expired, token } = res.data;
             document.cookie = `hexschool=${token}; expires=${expired}`;
-            window.location = 'products.html';
+            window.location = './products.html';
         })
         .catch((err) => {
             alert(err.response.data.message);
