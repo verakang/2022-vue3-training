@@ -4,6 +4,8 @@ import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.26/vue
 let productModal = "";
 let delProductModal = "";
 
+import pagination from './pagination-template.js';
+
 const app = createApp({
     data() {
         return {
@@ -14,8 +16,12 @@ const app = createApp({
                 imagesUrl: []
             },
             isNew: false,
-            updateTitle: "新增產品"
+            updateTitle: "新增產品",
+            page: {}
         }
+    },
+    components: {
+        pagination
     },
     methods: {
         checkLogin() {
@@ -31,12 +37,14 @@ const app = createApp({
                     window.location = './login.html';
                 })
         },
-        getData() {
-            const url = `${this.apiUrl}/api/${this.apiPath}/admin/products/all`;
+        getData(page = 1) {
+            const url = `${this.apiUrl}/api/${this.apiPath}/admin/products/?page=${page}`;
             axios.get(url)
                 .then((res) => {
                     // 將取得的資料存在 data
+                    // console.log("產品資訊:", res.data);
                     this.products = res.data.products;
+                    this.page = res.data.pagination;
                 })
                 .catch((err) => {
                     alert(err.data.message);
@@ -110,6 +118,16 @@ const app = createApp({
         productModal = new bootstrap.Modal("#productModal");
         delProductModal = new bootstrap.Modal("#delProductModal");
     }
+});
+
+// 子元件/全域
+app.component('product-modal', {
+    props: ['productTemp', 'updateProduct', 'updateTitle'],
+    template: '#product-modal-template'
+});
+app.component('delete-modal', {
+    props: ['productTemp', 'removeProduct'],
+    template: '#delete-modal-template'
 });
 
 app.mount("#app");
