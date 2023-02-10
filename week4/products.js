@@ -1,8 +1,8 @@
 import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.26/vue.esm-browser.min.js';
 
 // 宣告 Bootstrap Modal、於生命週期階段綁定 DOM
-let productModal = "";
-let delProductModal = "";
+let productModal;
+let delProductModal;
 
 import pagination from './pagination-template.js';
 
@@ -42,7 +42,6 @@ const app = createApp({
             axios.get(url)
                 .then((res) => {
                     // 將取得的資料存在 data
-                    // console.log("產品資訊:", res.data);
                     this.products = res.data.products;
                     this.page = res.data.pagination;
                 })

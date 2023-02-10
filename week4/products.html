@@ -71,7 +71,7 @@
         <div id="productModal" ref="productModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel"
             aria-hidden="true">
             <!-- 產品元件 -->
-            <product-modal :product-temp="productTemp" :update-product="updateProduct" :update-title="updateTitle"
+            <product-modal :product-temp="productTemp" :update-product="updateProduct"
                 :update-title="updateTitle"></product-modal>
         </div>
         <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1"
@@ -150,12 +150,12 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="origin_price" class="form-label">原價</label>
                                     <input id="origin_price" type="number" min="0" class="form-control"
-                                        placeholder="請輸入原價" v-model.num="productTemp.origin_price">
+                                        placeholder="請輸入原價" v-model.number="productTemp.origin_price">
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="price" class="form-label">售價</label>
                                     <input id="price" type="number" min="0" class="form-control" placeholder="請輸入售價"
-                                        v-model.num="productTemp.price">
+                                        v-model.number="productTemp.price">
                                 </div>
                             </div>
                             <hr>
